@@ -4,6 +4,9 @@
   "description": "Software project for DEIE UOR FOE 5/6th semester",
   "repository": "git@github.com:chxru/hosp-e.git",
   "packageManager": "yarn@3.2.0",
+  "scripts": {
+    "user": "yarn workspace @hospe/user dev"
+  },
   "workspaces": [
     "packages/**/*"
   ]
