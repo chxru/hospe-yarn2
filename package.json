@@ -5,7 +5,8 @@
   "repository": "git@github.com:chxru/hosp-e.git",
   "packageManager": "yarn@3.2.0",
   "scripts": {
-    "user": "yarn workspace @hospe/user dev"
+    "doctor": "yarn workspace @hospe/doctor dev -p 3001",
+    "user": "yarn workspace @hospe/user dev -p 3000"
   },
   "workspaces": [
     "packages/**/*"

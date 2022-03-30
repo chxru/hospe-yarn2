@@ -41,6 +41,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hospe/doctor@workspace:packages/frontend/doctor":
+  version: 0.0.0-use.local
+  resolution: "@hospe/doctor@workspace:packages/frontend/doctor"
+  dependencies:
+    "@types/node": 17.0.23
+    "@types/react": 17.0.43
+    "@types/react-dom": 17.0.14
+    eslint: 8.12.0
+    eslint-config-next: 12.1.2
+    next: 12.1.2
+    react: 18.0.0
+    react-dom: 18.0.0
+    typescript: 4.6.3
+  languageName: unknown
+  linkType: soft
+
 "@hospe/main@workspace:.":
   version: 0.0.0-use.local
   resolution: "@hospe/main@workspace:."
