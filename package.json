@@ -1,0 +1,10 @@
+{
+  "name": "@hospe/main",
+  "version": "1.0.0",
+  "description": "Software project for DEIE UOR FOE 5/6th semester",
+  "repository": "git@github.com:chxru/hosp-e.git",
+  "packageManager": "yarn@3.2.0",
+  "workspaces": [
+    "packages/**/*"
+  ]
+}
