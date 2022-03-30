@@ -10,5 +10,8 @@
   },
   "workspaces": [
     "packages/**/*"
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
 }
