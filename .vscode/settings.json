@@ -1,12 +1,10 @@
 {
-  "cSpell.words": [
-    "DEIE",
-    "hospe"
-  ],
+  "cSpell.words": ["DEIE", "hospe"],
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true
   },
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "conventionalCommits.scopes": ["auth-service"]
 }
