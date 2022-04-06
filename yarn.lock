@@ -764,6 +764,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hospe/doctor@workspace:packages/frontend/doctor"
   dependencies:
+    "@mantine/core": ^4.1.2
+    "@mantine/hooks": ^4.1.2
+    "@mantine/next": ^4.1.2
     "@types/node": 17.0.23
     "@types/react": 17.0.43
     "@types/react-dom": 17.0.14
