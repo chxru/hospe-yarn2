@@ -1316,6 +1316,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@hospe/user", "workspace:packages/frontend/user"],\
             ["@mantine/core", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:4.1.2"],\
+            ["@mantine/form", "virtual:f7dc403a41c7e7bbf6d8f981fcc288c5d3ded3fe2754d0f92c2d87c03279250f9f08e6ec721bb864a345a8342a035915f7a35910153055232d16e4c1eef5001d#npm:4.1.2"],\
             ["@mantine/hooks", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:4.1.2"],\
             ["@mantine/next", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:4.1.2"],\
             ["@types/node", "npm:17.0.23"],\
@@ -1672,6 +1673,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/react-dom",\
             "@types/react",\
             "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@mantine/form", [\
+        ["npm:4.1.2", {\
+          "packageLocation": "./.yarn/cache/@mantine-form-npm-4.1.2-a288c537c3-b44af5af54.zip/node_modules/@mantine/form/",\
+          "packageDependencies": [\
+            ["@mantine/form", "npm:4.1.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f7dc403a41c7e7bbf6d8f981fcc288c5d3ded3fe2754d0f92c2d87c03279250f9f08e6ec721bb864a345a8342a035915f7a35910153055232d16e4c1eef5001d#npm:4.1.2", {\
+          "packageLocation": "./.yarn/__virtual__/@mantine-form-virtual-48fff513f4/0/cache/@mantine-form-npm-4.1.2-a288c537c3-b44af5af54.zip/node_modules/@mantine/form/",\
+          "packageDependencies": [\
+            ["@mantine/form", "virtual:f7dc403a41c7e7bbf6d8f981fcc288c5d3ded3fe2754d0f92c2d87c03279250f9f08e6ec721bb864a345a8342a035915f7a35910153055232d16e4c1eef5001d#npm:4.1.2"],\
+            ["@types/react", "npm:17.0.43"],\
+            ["react", "npm:18.0.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
             "react"\
           ],\
           "linkType": "HARD"\

@@ -797,6 +797,7 @@ __metadata:
   resolution: "@hospe/user@workspace:packages/frontend/user"
   dependencies:
     "@mantine/core": ^4.1.2
+    "@mantine/form": ^4.1.2
     "@mantine/hooks": ^4.1.2
     "@mantine/next": ^4.1.2
     "@types/node": 17.0.23
@@ -1099,6 +1100,15 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: ec75a62c9acdbfa05669a2cc702c8d8d4cf0dc640da9fc3bd717f279328e835c0551aa16623cf3835e88889b7dd9f7993069ed929a9718631b2bb43fc2427030
+  languageName: node
+  linkType: hard
+
+"@mantine/form@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@mantine/form@npm:4.1.2"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: b44af5af54cd513e27c9b5d2b1d0a6e593b1cd8a930b1ecd8f6e90ae4d8a1d6471e1c84c9207f2aca20fb35a0b1fc93bfb8c097d3de937618aca95c9eb18c83b
   languageName: node
   linkType: hard
 
