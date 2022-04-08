@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  postgres:
+    build: ./databases/postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: dbpassword
+      POSTGRES_USER: hospe
+      POSTGRES_DB: hospe
+    volumes:
+      - hospe-postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  hospe-postgres:
