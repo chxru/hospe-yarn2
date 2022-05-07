@@ -808,6 +808,7 @@ __metadata:
     next: 12.1.2
     react: 18.0.0
     react-dom: 18.0.0
+    tabler-icons-react: ^1.47.0
     typescript: 4.6.3
   languageName: unknown
   linkType: soft
@@ -8561,6 +8562,15 @@ __metadata:
     string-width: ^4.2.3
     strip-ansi: ^6.0.1
   checksum: 5b07fe462ee03d2e1fac02cbb578efd2e0b55ac07e3d3db2e950aa9570ade5a4a2b8d3c15e9f25c89e4e50b646bc4269934601ee1eef4ca7968ad31960977690
+  languageName: node
+  linkType: hard
+
+"tabler-icons-react@npm:^1.47.0":
+  version: 1.47.0
+  resolution: "tabler-icons-react@npm:1.47.0"
+  peerDependencies:
+    react: ">= 16.8.0"
+  checksum: 9bac720a28d80e871926a6dd92950b8c2c090b5796d0c46f92e91c9bf9860126c7671c6ed460d0edd2030aae4e5b5f189b9b8688b48bd36325a069858ccb5597
   languageName: node
   linkType: hard
 

@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
+import AuthenticatedLayout from "../layouts/withAuth";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         colorScheme: "light",
       }}
     >
-      <Component {...pageProps} />
+      <AuthenticatedLayout>
+        <Component {...pageProps} />
+      </AuthenticatedLayout>
     </MantineProvider>
   );
 }

@@ -1327,6 +1327,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:12.1.2"],\
             ["react", "npm:18.0.0"],\
             ["react-dom", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:18.0.0"],\
+            ["tabler-icons-react", "virtual:f7dc403a41c7e7bbf6d8f981fcc288c5d3ded3fe2754d0f92c2d87c03279250f9f08e6ec721bb864a345a8342a035915f7a35910153055232d16e4c1eef5001d#npm:1.47.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
           ],\
           "linkType": "SOFT"\
@@ -10815,6 +10816,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["slice-ansi", "npm:4.0.0"],\
             ["string-width", "npm:4.2.3"],\
             ["strip-ansi", "npm:6.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["tabler-icons-react", [\
+        ["npm:1.47.0", {\
+          "packageLocation": "./.yarn/cache/tabler-icons-react-npm-1.47.0-2de612adfe-9bac720a28.zip/node_modules/tabler-icons-react/",\
+          "packageDependencies": [\
+            ["tabler-icons-react", "npm:1.47.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f7dc403a41c7e7bbf6d8f981fcc288c5d3ded3fe2754d0f92c2d87c03279250f9f08e6ec721bb864a345a8342a035915f7a35910153055232d16e4c1eef5001d#npm:1.47.0", {\
+          "packageLocation": "./.yarn/__virtual__/tabler-icons-react-virtual-75fd8e383d/0/cache/tabler-icons-react-npm-1.47.0-2de612adfe-9bac720a28.zip/node_modules/tabler-icons-react/",\
+          "packageDependencies": [\
+            ["tabler-icons-react", "virtual:f7dc403a41c7e7bbf6d8f981fcc288c5d3ded3fe2754d0f92c2d87c03279250f9f08e6ec721bb864a345a8342a035915f7a35910153055232d16e4c1eef5001d#npm:1.47.0"],\
+            ["@types/react", "npm:17.0.43"],\
+            ["react", "npm:18.0.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
