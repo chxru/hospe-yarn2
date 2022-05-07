@@ -3,12 +3,17 @@ import express from "express";
 import morgan from "morgan";
 import pg from "./pg";
 
+// routes
+import RegisterRoutes from "./routes/register.routes";
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
-app.get("*", (req, res) => {
+app.use("/register", RegisterRoutes);
+
+app.get("*", (_req, res) => {
   res.sendStatus(404);
 });
 
