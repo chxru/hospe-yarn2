@@ -7,7 +7,6 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "conventionalCommits.scopes": [
-    "auth-service",
     "user-ui",
     "doctor-ui",
     "db-postgres",
