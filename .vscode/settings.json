@@ -10,6 +10,7 @@
     "auth-service",
     "user-ui",
     "doctor-ui",
-    "db-postgres"
+    "db-postgres",
+    "iam-service"
   ]
 }
