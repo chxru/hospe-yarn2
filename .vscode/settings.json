@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["DEIE", "hospe", "mantine", "tabler", "Unstyled"],
+  "cSpell.words": [
+    "DEIE",
+    "hospe",
+    "mantine",
+    "tabler",
+    "Unstyled"
+  ],
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true
@@ -11,5 +17,6 @@
     "doctor-ui",
     "db-postgres",
     "iam-service"
-  ]
+  ],
+  "eslint.nodePath": ".yarn/sdks"
 }
