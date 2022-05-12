@@ -4,22 +4,52 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["plugin:react/recommended", "airbnb"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: "latest",
-    sourceType: "module",
+    tsconfigRootDir: __dirname,
+    project: ["./packages/*/*/tsconfig.json"],
+    ecmaVersion: 2020,
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["@typescript-eslint"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "airbnb-typescript",
+    "plugin:eslint-comments/recommended",
+    "plugin:import/recommended",
+    "plugin:node/recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+  ],
   rules: {
-    quotes: ["error", "double"],
-    "react/jsx-filename-extension": [
-      2,
-      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
+    quotes: "off",
+    "@typescript-eslint/quotes": ["error", "double"],
+    "node/no-unsupported-features/es-syntax": [
+      "error",
+      { version: ">=16.15.0", ignores: ["modules"] },
+    ],
+    "node/no-missing-import": [
+      "error",
+      {
+        allowModules: [],
+        resolvePaths: ["./.yarn"],
+        tryExtensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+    ],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        checksVoidReturn: false,
+      },
+    ],
+    "@typescript-eslint/no-floating-promises": [
+      "error",
+      {
+        ignoreIIFE: true,
+      },
     ],
   },
   root: true,
+  ignorePatterns: [".eslintrc.js", "next.config.js"],
 };

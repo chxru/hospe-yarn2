@@ -19,7 +19,9 @@ app.get("*", (_req, res) => {
 
 (async () => {
   try {
-    await app.listen(process.env.IAM_PORT);
+    if (!process.env.IAM_PORT) return console.error("IAM port is missing");
+
+    app.listen(process.env.IAM_PORT);
     console.log(`Server is listening on ${process.env.IAM_PORT}`);
 
     await pg.connect();

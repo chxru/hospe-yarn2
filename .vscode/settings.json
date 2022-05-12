@@ -1,11 +1,5 @@
 {
-  "cSpell.words": [
-    "DEIE",
-    "hospe",
-    "mantine",
-    "tabler",
-    "Unstyled"
-  ],
+  "cSpell.words": ["DEIE", "hospe", "IIFE", "mantine", "tabler", "Unstyled"],
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true

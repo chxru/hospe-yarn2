@@ -75,7 +75,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     boxSizing: "border-box",
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontFamily: `Greycliff CF, ${theme.fontFamily || "sans-serif"}`,
     marginBottom: theme.spacing.xl,
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,

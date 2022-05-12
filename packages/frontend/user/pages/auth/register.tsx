@@ -38,7 +38,7 @@ const RegisterPage: React.FC = () => {
           <Title
             align="center"
             sx={(theme) => ({
-              fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+              fontFamily: `Greycliff CF, ${theme.fontFamily || "sans-serif"}`,
               fontWeight: 900,
             })}
           >
@@ -49,7 +49,10 @@ const RegisterPage: React.FC = () => {
             <Anchor<"a">
               href="#"
               size="sm"
-              onClick={(evt) => NavigateTo(router, "/auth/login", evt)}
+              onClick={(evt) =>{ 
+                evt.preventDefault();                
+                NavigateTo(router, "/auth/login");
+              }}
             >
               Sign In
             </Anchor>
