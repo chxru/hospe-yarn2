@@ -15,4 +15,19 @@ const HashPwd = (pwd: string): Promise<string> => {
   });
 };
 
-export { HashPwd };
+/**
+ * Compare plain text password with hash
+ * 
+ * @param plain Plain text password
+ * @param hash Encrypted password
+ */
+const ComparePwd = async (plain: string, hash: string) : Promise<void> => {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(plain, hash).then(result => {
+      if (!result) reject(new Error("wrong password"));
+      resolve();
+    }).catch(err => reject(err));
+  });
+};
+
+export { ComparePwd, HashPwd };
