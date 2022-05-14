@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import { NextApplicationPage } from "../types";
 
-const Home: NextPage = () => {
+const Home: NextApplicationPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -68,5 +68,7 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+Home.requireAuth = true;
 
 export default Home;

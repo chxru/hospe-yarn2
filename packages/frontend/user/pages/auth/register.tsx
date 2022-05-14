@@ -17,15 +17,56 @@ import {
 import { useForm } from "@mantine/form";
 
 import { NavigateTo } from "../../helper/navigate";
+import { useAuth } from "../../contexts/authContext";
+
+interface IRegisterForm {
+  fname: string;
+  lname: string;
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
 
 const RegisterPage: React.FC = () => {
   const router = useRouter();
-  const form = useForm({
-    initialValues: { email: "", password: "", rememberMe: false },
+  const auth = useAuth();
+
+  const form = useForm<IRegisterForm>({
+    initialValues: {
+      email: "",
+      password: "",
+      fname: "",
+      lname: "",
+      rememberMe: false,
+    },
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
     },
   });
+
+  const onSubmit = async (values: IRegisterForm) => {
+    try {
+      const request = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!request.ok) throw new Error("Not okay");
+
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const { userId, fname, lname, email } = await request.json();
+
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      auth.updateUser({ userId, fname, lname, email });
+
+      NavigateTo(router, "/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -49,8 +90,8 @@ const RegisterPage: React.FC = () => {
             <Anchor<"a">
               href="#"
               size="sm"
-              onClick={(evt) =>{ 
-                evt.preventDefault();                
+              onClick={(evt) => {
+                evt.preventDefault();
                 NavigateTo(router, "/auth/login");
               }}
             >
@@ -59,10 +100,19 @@ const RegisterPage: React.FC = () => {
           </Text>
 
           <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-            <form onSubmit={form.onSubmit((values) => console.log(values))}>
+            <form onSubmit={form.onSubmit(onSubmit)}>
+              <TextInput
+                label="First Name"
+                required
+                {...form.getInputProps("fname")}
+              />
+              <TextInput
+                label="Last Name"
+                required
+                {...form.getInputProps("lname")}
+              />
               <TextInput
                 label="Email"
-                placeholder="you@mantine.dev"
                 required
                 {...form.getInputProps("email")}
               />
@@ -70,7 +120,7 @@ const RegisterPage: React.FC = () => {
                 label="Password"
                 placeholder="Your password"
                 required
-                mt="md"
+                mb="md"
                 {...form.getInputProps("password")}
               />
               <Group position="apart" mt="md">
