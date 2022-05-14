@@ -49,6 +49,15 @@ module.exports = {
         ignoreIIFE: true,
       },
     ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn", // or error
+      {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
+      },
+    ],
   },
   root: true,
   ignorePatterns: [".eslintrc.js", "next.config.js"],
