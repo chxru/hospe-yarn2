@@ -18,16 +18,16 @@ export const RegisterNewUser = async (data: NewUserProps) => {
   try {
     await trx.query("BEGIN");
 
-    const q1 = await trx.query<{ user_id: string }>(
-      "INSERT INTO users.data (email, fname, lname) VALUES ($1, $2, $3) RETURNING user_id",
+    const q1 = await trx.query<{ userId: string }>(
+      "INSERT INTO users.data (email, fname, lname) VALUES ($1, $2, $3) RETURNING userId",
       [data.email, data.fname, data.lname],
     );
 
     if (!q1.rowCount) throw new Error("q1 returned 0 rows");
 
     await trx.query(
-      "INSERT INTO users.auth (email, pwd, user_id) VALUES ($1, $2, $3)",
-      [data.email, hashedPwd, q1.rows[0].user_id],
+      "INSERT INTO users.auth (email, pwd, userId) VALUES ($1, $2, $3)",
+      [data.email, hashedPwd, q1.rows[0].userId],
     );
 
     await trx.query("COMMIT");
