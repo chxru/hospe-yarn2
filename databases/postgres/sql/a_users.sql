@@ -1,7 +1,7 @@
 create schema if not exists users;
 
 create table if not exists users.data(
-  user_id uuid primary key default gen_random_uuid(),
+  userId uuid primary key default gen_random_uuid(),
   email text unique not null,
   fname text not null,
   lname text,
@@ -12,6 +12,6 @@ create table if not exists users.data(
 create table if not exists users.auth(
   email text unique primary key,
   pwd text not null,
-  user_id uuid not null references users.data(user_id),
+  userId uuid not null references users.data(userId),
   last_update timestamptz not null default now()
 );
