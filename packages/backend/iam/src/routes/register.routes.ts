@@ -13,8 +13,9 @@ router.post<NewUserProps>("/user", async (req: Request<{}, {}, NewUserProps>, re
       lname: req.body.lname,
       password: req.body.password,
     };
-    await RegisterNewUser(data);
-    res.sendStatus(201);
+    
+    const response = await RegisterNewUser(data);
+    res.status(201).json(response);
   } catch (error) {
     console.error(error);
     res.sendStatus(500);

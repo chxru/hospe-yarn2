@@ -7,7 +7,7 @@ export interface UserLoginProps {
 }
 
 export interface UserLoginRes {
-  userId: string,
+  userid: string,
   fname: string,
   lname: string,
   email: string
@@ -19,23 +19,23 @@ export interface UserLoginRes {
 export const LoginUser = async ({ email, password }: UserLoginProps): Promise<UserLoginRes> => {
   try {
     const authQuery = await pg.query<{
-      userId: string;
+      userid: string;
       email: string;
       pwd: string;
-    }>("SELECT userId, pwd FROM users.auth WHERE email=$1", [email]);
+    }>("SELECT userid, pwd FROM users.auth WHERE email=$1", [email]);
 
     if (!authQuery.rowCount) {
       throw new Error("Cannot find email");
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const { userId,  pwd } = authQuery.rows[0];
+    const { userid,  pwd } = authQuery.rows[0];
 
     await ComparePwd(password, pwd);
 
     const dataQuery = await pg.query<{ fname: string, lname: string }>(
-      "SELECT fname, lname FROM users.data WHERE userId=$1",
-      [authQuery.rows[0].userId],
+      "SELECT fname, lname FROM users.data WHERE userid=$1",
+      [authQuery.rows[0].userid],
     );
 
     if (!dataQuery.rowCount) throw new Error("Cannot find user data");
@@ -45,7 +45,7 @@ export const LoginUser = async ({ email, password }: UserLoginProps): Promise<Us
     // TODO: Add JWT
 
     const res: UserLoginRes = {
-      userId,
+      userid,
       fname,
       lname,
       email,
