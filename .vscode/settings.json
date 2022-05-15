@@ -10,7 +10,8 @@
     "user-ui",
     "doctor-ui",
     "db-postgres",
-    "iam-service"
+    "iam-service",
+    "db-mongo"
   ],
   "eslint.nodePath": ".yarn/sdks"
 }

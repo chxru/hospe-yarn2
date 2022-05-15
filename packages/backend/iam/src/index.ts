@@ -1,7 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import morgan from "morgan";
-import pg from "./pg";
+
+import { ConnectMongoose } from "./models/mongoose";
 
 // routes
 import LoginRoutes from "./routes/login.routes";
@@ -26,8 +27,8 @@ app.get("*", (_req, res) => {
     app.listen(process.env.IAM_PORT);
     console.log(`Server is listening on ${process.env.IAM_PORT}`);
 
-    await pg.connect();
-    console.log("Connected to postgres");
+    await ConnectMongoose();
+    console.log("Connected to mongo atlas");
   } catch (error) {
     console.error("Error occurred while IAM starts");
     console.error(error);
