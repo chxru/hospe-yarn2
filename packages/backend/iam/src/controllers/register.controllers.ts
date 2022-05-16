@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 import { UserModel } from "../models/users";
 import { HashPwd } from "../util/bcrypt";
+import { GenerateJWT } from "../util/jwt";
 
 export interface NewUserProps {
   email: string;
@@ -10,12 +11,14 @@ export interface NewUserProps {
 }
 
 export interface NewUserResponse {
-  _id: Types.ObjectId,
+  _id: Types.ObjectId | string,
   name: {
     first: string,
     last: string,
   }
-  email: string
+  email: string,
+  access: string,
+  refresh: string
 }
 
 /**
@@ -37,9 +40,15 @@ export const RegisterNewUser = async (data: NewUserProps): Promise<NewUserRespon
 
   const saved = await user.save();
 
+  const accessToken = await GenerateJWT(user._id.toString(), "user", "access");
+  const refreshToken = await GenerateJWT(user._id.toString(), "user", "refresh");
+
+
   return {
-    _id: saved._id,
+    _id: saved._id.toString(),
     name: saved.name,
     email: saved.email,
+    access: accessToken,
+    refresh: refreshToken,
   };
 };

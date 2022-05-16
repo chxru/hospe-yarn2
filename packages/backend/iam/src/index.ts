@@ -6,6 +6,7 @@ import { ConnectMongoose } from "./models/mongoose";
 
 // routes
 import LoginRoutes from "./routes/login.routes";
+import RefreshRoutes from "./routes/refresh.routes";
 import RegisterRoutes from "./routes/register.routes";
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
 app.use("/login", LoginRoutes);
+app.use("/refresh", RefreshRoutes);
 app.use("/register", RegisterRoutes);
 
 app.get("*", (_req, res) => {
