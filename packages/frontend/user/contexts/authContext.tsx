@@ -3,18 +3,21 @@ import { createContext, FunctionComponent, useContext, useEffect, useState } fro
 const REDIRECT_KEY = "redirect_key";
 
 interface User {
-  userId: string,
-  fname: string,
-  lname: string,
+  id: string,
+  name: {
+    first: string,
+    last: string
+  }
   email: string
 }
-
+ 
 interface IAuthContext {
   initializing: boolean,
   error?: {
     title: string,
     description?: string,
   },
+  accessToken?: string,
   user: User | null,
   clearRedirect: () => void
   getRedirect: () => void,
@@ -47,20 +50,54 @@ export const useAuth = () => {
   return auth;
 };
 
-export const AuthProvider: FunctionComponent = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [error, setError] = useState<{ title: string, description?: string }>();
-  const [initializing, setInitializing] = useState<boolean>(true);
+interface RefreshResponse {
+  _id: string,
+  access: string,
+  email: string,
+  name: {
+    first: string,
+    last: string
+  },
+  refresh: string
+}
 
-  useEffect(() => {
-    // TODO: check for cookie, refresh token
-    setError(undefined);
-    setInitializing(false);
-  }, []);
+export const AuthProvider: FunctionComponent = ({ children }) => {
+  const [initializing, setInitializing] = useState<boolean>(true);
+  const [error, setError] = useState<{ title: string, description?: string }>();
+  const [accessToken, setAccessToken] = useState<string | undefined>();
+  const [user, setUser] = useState<User | null>(null);
 
   const updateUser = (u: User) => {
     setUser(u);
   };
+
+  const RefreshAccessToken = async () => {
+    if (accessToken) return;
+    
+    const res = await fetch("/api/auth/refresh", { method: "POST", credentials: "same-origin" });
+    if (res.ok) {
+      const data = await res.json() as RefreshResponse;
+      if (data.access) setAccessToken(data.access );
+      updateUser({ email: data.email, name: data.name, id: data._id });
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setInitializing(true);
+        setError(undefined);
+
+        await RefreshAccessToken();        
+      } catch (err) {
+        setError({ title: "Error occurred while token refreshing" });
+        console.error(err);
+      } finally {
+        setInitializing(false);
+      }
+    })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const value: IAuthContext = {
     initializing,

@@ -1,5 +1,18 @@
 import fetch from "node-fetch";
+import { serialize } from "cookie";
+
 import type { NextApiRequest, NextApiResponse } from "next";
+
+export interface UserLoginRes {
+  _id: string,
+  name: {
+    first: string,
+    last: string,
+  }
+  email: string,
+  access: string,
+  refresh: string,
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const baseUrl = "http://localhost:4000";
@@ -16,9 +29,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!sr.ok) throw new Error("Login request failed");
 
-    const data = await sr.json();
+    const { access, refresh, ...user } = await sr.json() as UserLoginRes;
+    if (!access || !refresh) throw new Error("Tokens are missing");
 
-    res.status(200).json(data);
+    const header = serialize("refresh_token", refresh, {
+      httpOnly: true,
+      // TODO: Sync this with IAM expire duration
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      sameSite: true,
+    });
+
+    res.setHeader("Set-Cookie", header);
+    res.status(200).json({ ...user, access });
   } catch (error) {
     console.log(error);
     res.status(500).json({
