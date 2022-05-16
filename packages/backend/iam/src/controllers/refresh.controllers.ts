@@ -1,22 +1,13 @@
+import { API } from "@hospe/types";
 import { UserModel } from "../models/users";
 import { DecodeJWT, GenerateJWT } from "../util/jwt";
-import { UserLoginRes } from "./login.controllers";
 
-export interface IRefreshTokenReq {
-  refreshToken: string
-}
-
-interface JWTContent {
-  id: string,
-  role: string
-}
-
-export const HandleRefreshTokens = async (refreshToken: string) => {
+export const HandleRefreshTokens = async (refreshToken: string): Promise<API.IAM.Refresh.Res> => {
   try {
     const payload = await DecodeJWT(refreshToken);
     if (!payload) throw new Error("Payload content is empty");
 
-    const { id, role } = JSON.parse(payload) as JWTContent;
+    const { id, role } = JSON.parse(payload) as API.IAM.JWT;
 
     const accessToken = await GenerateJWT(id, role, "access");
 
@@ -26,7 +17,7 @@ export const HandleRefreshTokens = async (refreshToken: string) => {
     if (!user) throw new Error(`Cannot find user for ${id}`);
 
 
-    const res: UserLoginRes = {
+    const res: API.IAM.Refresh.Res = {
       _id: id,
       name: user.name,
       email: user.email,

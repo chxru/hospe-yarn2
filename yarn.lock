@@ -291,6 +291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hospe/iam@workspace:packages/backend/iam"
   dependencies:
+    "@hospe/types": "*"
     "@types/bcrypt": ^5
     "@types/express": ^4
     "@types/jsonwebtoken": ^8
@@ -325,10 +326,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@hospe/types@*, @hospe/types@workspace:packages/types":
+  version: 0.0.0-use.local
+  resolution: "@hospe/types@workspace:packages/types"
+  dependencies:
+    "@types/node": ^17.0.33
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@hospe/user@workspace:packages/frontend/user":
   version: 0.0.0-use.local
   resolution: "@hospe/user@workspace:packages/frontend/user"
   dependencies:
+    "@hospe/types": "*"
     "@mantine/core": ^4.1.2
     "@mantine/form": ^4.1.2
     "@mantine/hooks": ^4.1.2
@@ -886,6 +897,13 @@ __metadata:
   version: 17.0.23
   resolution: "@types/node@npm:17.0.23"
   checksum: a3517554737cbb042e76c30d0e5482192ac4d9bea0eeb086e2622d9cabf460a0eb52a696b99fcd18e7fcc93c96db6cc7ae507f6608f256ef0b5c1d8c87a5a470
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^17.0.33":
+  version: 17.0.33
+  resolution: "@types/node@npm:17.0.33"
+  checksum: 6620652cc89ce125e1162e060ec4608c25b3635185e3e5dcaae4ed09e4770dc8bf168ba48bcd7059a1a56087a05000d7ed562e81aea7b6a512e2b13d4409c6b6
   languageName: node
   linkType: hard
 

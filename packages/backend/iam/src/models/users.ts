@@ -1,20 +1,7 @@
 import { model, Schema } from "mongoose";
+import { DB } from "@hospe/types";
 
-interface IUser {
-  name: {
-    first: string,
-    last: string,
-  },
-  email: string,
-  permission: {
-    admin: boolean,
-    doctor: boolean,
-    user: boolean
-  },
-  password: string
-}
-
-const UserSchema = new Schema<IUser>({
+const UserSchema = new Schema<DB.User.Data>({
   name: {
     first: {
       type: String,
@@ -52,4 +39,4 @@ const UserSchema = new Schema<IUser>({
   },
 });
 
-export const UserModel = model<IUser>("User", UserSchema);
+export const UserModel = model<DB.User.Data>("User", UserSchema);

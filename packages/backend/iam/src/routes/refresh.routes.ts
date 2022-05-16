@@ -1,12 +1,12 @@
+import { API } from "@hospe/types";
 import { Request, Router } from "express";
-import { UserLoginRes } from "../controllers/login.controllers";
-import { HandleRefreshTokens, IRefreshTokenReq } from "../controllers/refresh.controllers";
+import { HandleRefreshTokens } from "../controllers/refresh.controllers";
 
 const router = Router();
 
 // TODO: Fix lint issue
 // eslint-disable-next-line @typescript-eslint/ban-types
-router.post<UserLoginRes>("/user", async (req: Request<{}, {}, IRefreshTokenReq>, res) => {
+router.post<API.IAM.Refresh.Res>("/user", async (req: Request<{}, {}, API.IAM.Refresh.Req>, res) => {
   try {
     const result = await HandleRefreshTokens(req.body.refreshToken);
     res.status(200).json(result);

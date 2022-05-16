@@ -1,28 +1,12 @@
-import { Types } from "mongoose";
+import { API } from "@hospe/types";
 import { UserModel } from "../models/users";
 import { ComparePwd } from "../util/bcrypt";
 import { GenerateJWT } from "../util/jwt";
 
-export interface UserLoginProps {
-  email: string;
-  password: string;
-}
-
-export interface UserLoginRes {
-  _id: Types.ObjectId | string,
-  name: {
-    first: string,
-    last: string,
-  }
-  email: string,
-  access: string,
-  refresh: string,
-}
-
 /**
  * Authenticate users
  */
-export const LoginUser = async ({ email, password }: UserLoginProps): Promise<UserLoginRes> => {
+export const LoginUser = async ({ email, password }: API.IAM.Login.Req): Promise<API.IAM.Login.Res> => {
   try {
     const user = await UserModel.findOne({ email });
 
@@ -35,8 +19,8 @@ export const LoginUser = async ({ email, password }: UserLoginProps): Promise<Us
     const accessToken = await GenerateJWT(user._id.toString(), "user", "access");
     const refreshToken = await GenerateJWT(user._id.toString(), "user", "refresh");
 
-    const res: UserLoginRes = {
-      _id: user._id,
+    const res: API.IAM.Login.Res = {
+      _id: user._id.toString(),
       name: user.name,
       email: user.email,
       access: accessToken,

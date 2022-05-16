@@ -1,30 +1,12 @@
-import { Types } from "mongoose";
+import { API } from "@hospe/types";
 import { UserModel } from "../models/users";
 import { HashPwd } from "../util/bcrypt";
 import { GenerateJWT } from "../util/jwt";
 
-export interface NewUserProps {
-  email: string;
-  password: string;
-  fname: string;
-  lname: string;
-}
-
-export interface NewUserResponse {
-  _id: Types.ObjectId | string,
-  name: {
-    first: string,
-    last: string,
-  }
-  email: string,
-  access: string,
-  refresh: string
-}
-
 /**
  * Create new account with user role
  */
-export const RegisterNewUser = async (data: NewUserProps): Promise<NewUserResponse> => {
+export const RegisterNewUser = async (data: API.IAM.Register.Req): Promise<API.IAM.Register.Res> => {
   const hashedPwd = await HashPwd(data.password);
   const user = new UserModel({
     name: {

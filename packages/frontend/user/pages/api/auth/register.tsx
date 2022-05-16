@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { API } from "@hospe/types";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const baseUrl = "http://localhost:4000";
@@ -16,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!sr.ok) throw new Error("Register request failed");
 
-    const data = await sr.json();
+    const data = await sr.json() as API.IAM.Register.Res;
 
     res.status(200).json(data);
   } catch (error) {

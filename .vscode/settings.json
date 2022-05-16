@@ -11,7 +11,8 @@
     "doctor-ui",
     "db-postgres",
     "iam-service",
-    "db-mongo"
+    "db-mongo",
+    "types"
   ],
   "eslint.nodePath": ".yarn/sdks"
 }

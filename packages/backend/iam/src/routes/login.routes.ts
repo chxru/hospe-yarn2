@@ -1,13 +1,14 @@
+import { API } from "@hospe/types";
 import { Request, Router } from "express";
-import { LoginUser, UserLoginProps, UserLoginRes } from "../controllers/login.controllers";
+import { LoginUser } from "../controllers/login.controllers";
 
 const router = Router();
 
 // TODO: Fix lint issue
 // eslint-disable-next-line @typescript-eslint/ban-types
-router.post<UserLoginRes>("/user", async (req: Request<{}, {}, UserLoginProps>, res) => {
+router.post<API.IAM.Login.Res>("/user", async (req: Request<{}, {}, API.IAM.Login.Req>, res) => {
   try {
-    const data: UserLoginProps = {
+    const data: API.IAM.Login.Req = {
       email: req.body.email,
       password: req.body.password,
     };
