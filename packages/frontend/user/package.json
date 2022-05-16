@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hospe/types": "*",
     "@mantine/core": "^4.1.2",
     "@mantine/form": "^4.1.2",
     "@mantine/hooks": "^4.1.2",

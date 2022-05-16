@@ -18,6 +18,7 @@ import { useForm } from "@mantine/form";
 
 import { NavigateTo } from "../../helper/navigate";
 import { useAuth } from "../../contexts/authContext";
+import { API } from "@hospe/types";
 
 interface IRegisterForm {
   fname: string;
@@ -56,11 +57,10 @@ const RegisterPage: React.FC = () => {
 
       if (!request.ok) throw new Error("Not okay");
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const { userId, fname, lname, email } = await request.json();
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      const { _id, name, email } = await request.json() as API.IAM.Register.Res;
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      auth.updateUser({ userId, fname, lname, email });
+      auth.updateUser({ id: _id, name, email });
 
       NavigateTo(router, "/");
     } catch (error) {

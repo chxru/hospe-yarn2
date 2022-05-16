@@ -31,6 +31,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "@hospe/user",\
         "reference": "workspace:packages/frontend/user"\
+      },\
+      {\
+        "name": "@hospe/types",\
+        "reference": "workspace:packages/types"\
       }\
     ],\
     "enableTopLevelFallback": true,\
@@ -39,6 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@hospe/doctor", ["workspace:packages/frontend/doctor"]],\
       ["@hospe/iam", ["workspace:packages/backend/iam"]],\
       ["@hospe/main", ["workspace:."]],\
+      ["@hospe/types", ["workspace:packages/types"]],\
       ["@hospe/user", ["workspace:packages/frontend/user"]]\
     ],\
     "fallbackPool": [\
@@ -421,6 +426,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/backend/iam/",\
           "packageDependencies": [\
             ["@hospe/iam", "workspace:packages/backend/iam"],\
+            ["@hospe/types", "workspace:packages/types"],\
             ["@types/bcrypt", "npm:5.0.0"],\
             ["@types/express", "npm:4.17.13"],\
             ["@types/jsonwebtoken", "npm:8.5.8"],\
@@ -458,11 +464,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
+      ["@hospe/types", [\
+        ["workspace:packages/types", {\
+          "packageLocation": "./packages/types/",\
+          "packageDependencies": [\
+            ["@hospe/types", "workspace:packages/types"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["@hospe/user", [\
         ["workspace:packages/frontend/user", {\
           "packageLocation": "./packages/frontend/user/",\
           "packageDependencies": [\
             ["@hospe/user", "workspace:packages/frontend/user"],\
+            ["@hospe/types", "workspace:packages/types"],\
             ["@mantine/core", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:4.1.2"],\
             ["@mantine/form", "virtual:f7dc403a41c7e7bbf6d8f981fcc288c5d3ded3fe2754d0f92c2d87c03279250f9f08e6ec721bb864a345a8342a035915f7a35910153055232d16e4c1eef5001d#npm:4.1.2"],\
             ["@mantine/hooks", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:4.1.2"],\
@@ -1283,6 +1301,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-17.0.23-167849e796-a351755473.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:17.0.23"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:17.0.33", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-17.0.33-e827e447d2-6620652cc8.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:17.0.33"]\
           ],\
           "linkType": "HARD"\
         }]\

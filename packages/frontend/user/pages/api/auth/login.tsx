@@ -1,18 +1,8 @@
 import fetch from "node-fetch";
 import { serialize } from "cookie";
+import { API } from "@hospe/types";
 
 import type { NextApiRequest, NextApiResponse } from "next";
-
-export interface UserLoginRes {
-  _id: string,
-  name: {
-    first: string,
-    last: string,
-  }
-  email: string,
-  access: string,
-  refresh: string,
-}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const baseUrl = "http://localhost:4000";
@@ -29,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!sr.ok) throw new Error("Login request failed");
 
-    const { access, refresh, ...user } = await sr.json() as UserLoginRes;
+    const { access, refresh, ...user } = await sr.json() as API.IAM.Login.Res;
     if (!access || !refresh) throw new Error("Tokens are missing");
 
     const header = serialize("refresh_token", refresh, {
