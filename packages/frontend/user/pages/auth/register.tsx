@@ -58,8 +58,9 @@ const RegisterPage: React.FC = () => {
       if (!request.ok) throw new Error("Not okay");
 
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      const { _id, name, email } = await request.json() as API.IAM.Register.Res;
+      const { _id, name, email, access } = await request.json() as API.IAM.Register.Res;
 
+      auth.updateAccessToken(access);
       auth.updateUser({ id: _id, name, email });
 
       NavigateTo(router, "/");

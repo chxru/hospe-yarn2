@@ -22,6 +22,7 @@ interface IAuthContext {
   clearRedirect: () => void
   getRedirect: () => void,
   setRedirect: (url: string) => void,
+  updateAccessToken: (token: string) => void,
   updateUser: (user: User) => void
 }
 
@@ -37,11 +38,15 @@ const clearRedirect = () => {
   window.sessionStorage.removeItem(REDIRECT_KEY);
 };
 
+const updateAccessTokenFn = (_token: string) => {
+  // Placeholder fn, check AuthProvider for definition
+};
+
 const updateUserFn = (_user: User) => {
   // Placeholder fn, check AuthProvider for definition
 };
 
-const AuthContext = createContext<IAuthContext>({ user: null, initializing: true, setRedirect, getRedirect, clearRedirect, updateUser: updateUserFn });
+const AuthContext = createContext<IAuthContext>({ user: null, initializing: true, setRedirect, getRedirect, clearRedirect, updateAccessToken: updateAccessTokenFn, updateUser: updateUserFn });
 AuthContext.displayName = "auth-context";
 
 export const useAuth = () => {
@@ -66,6 +71,10 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
   const [error, setError] = useState<{ title: string, description?: string }>();
   const [accessToken, setAccessToken] = useState<string | undefined>();
   const [user, setUser] = useState<User | null>(null);
+
+  const updateAccessToken = (token: string) => {
+    setAccessToken(token);
+  };
 
   const updateUser = (u: User) => {
     setUser(u);
@@ -106,6 +115,7 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
     clearRedirect,
     getRedirect,
     setRedirect,
+    updateAccessToken,
     updateUser,
   };
 
