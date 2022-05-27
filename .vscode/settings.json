@@ -12,7 +12,8 @@
     "db-postgres",
     "iam-service",
     "db-mongo",
-    "types"
+    "types",
+    "common-ui"
   ],
   "eslint.nodePath": ".yarn/sdks"
 }

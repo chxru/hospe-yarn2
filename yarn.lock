@@ -268,10 +268,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hospe/common-fe@*, @hospe/common-fe@workspace:packages/frontend/common":
+  version: 0.0.0-use.local
+  resolution: "@hospe/common-fe@workspace:packages/frontend/common"
+  dependencies:
+    "@types/node": 17.0.23
+    "@types/react": 17.0.43
+    "@types/react-dom": 17.0.14
+    eslint: 8.12.0
+    eslint-config-next: 12.1.2
+    next: 12.1.2
+    react: 18.0.0
+    react-dom: 18.0.0
+    typescript: 4.6.3
+  languageName: unknown
+  linkType: soft
+
 "@hospe/doctor@workspace:packages/frontend/doctor":
   version: 0.0.0-use.local
   resolution: "@hospe/doctor@workspace:packages/frontend/doctor"
   dependencies:
+    "@hospe/common-fe": "*"
     "@mantine/core": ^4.1.2
     "@mantine/hooks": ^4.1.2
     "@mantine/next": ^4.1.2
@@ -281,6 +298,7 @@ __metadata:
     eslint: 8.12.0
     eslint-config-next: 12.1.2
     next: 12.1.2
+    next-transpile-modules: ^9.0.0
     react: 18.0.0
     react-dom: 18.0.0
     typescript: 4.6.3
@@ -339,6 +357,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hospe/user@workspace:packages/frontend/user"
   dependencies:
+    "@hospe/common-fe": "*"
     "@hospe/types": "*"
     "@mantine/core": ^4.1.2
     "@mantine/form": ^4.1.2
@@ -352,6 +371,7 @@ __metadata:
     eslint: 8.12.0
     eslint-config-next: 12.1.2
     next: 12.1.2
+    next-transpile-modules: ^9.0.0
     node-fetch: ^3.2.4
     react: 18.0.0
     react-dom: 18.0.0
@@ -2070,6 +2090,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"enhanced-resolve@npm:^5.7.0":
+  version: 5.9.3
+  resolution: "enhanced-resolve@npm:5.9.3"
+  dependencies:
+    graceful-fs: ^4.2.4
+    tapable: ^2.2.0
+  checksum: 64c2dbbdd608d1a4df93b6e60786c603a1faf3b2e66dfd051d62cf4cfaeeb5e800166183685587208d62e9f7afff3f78f3d5978e32cd80125ba0c83b59a79d78
+  languageName: node
+  linkType: hard
+
 "entities@npm:^2.0.0":
   version: 2.2.0
   resolution: "entities@npm:2.2.0"
@@ -2143,6 +2173,13 @@ __metadata:
     is-date-object: ^1.0.1
     is-symbol: ^1.0.2
   checksum: 4ead6671a2c1402619bdd77f3503991232ca15e17e46222b0a41a5d81aebc8740a77822f5b3c965008e631153e9ef0580540007744521e72de8e33599fca2eed
+  languageName: node
+  linkType: hard
+
+"escalade@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "escalade@npm:3.1.1"
+  checksum: a3e2a99f07acb74b3ad4989c48ca0c3140f69f923e56d0cba0526240ee470b91010f9d39001f2a4a313841d237ede70a729e92125191ba5d21e74b106800b133
   languageName: node
   linkType: hard
 
@@ -3020,6 +3057,13 @@ __metadata:
     merge2: ^1.4.1
     slash: ^3.0.0
   checksum: b4be8885e0cfa018fc783792942d53926c35c50b3aefd3fdcfb9d22c627639dc26bd2327a40a0b74b074100ce95bb7187bfeae2f236856aa3de183af7a02aea6
+  languageName: node
+  linkType: hard
+
+"graceful-fs@npm:^4.2.4":
+  version: 4.2.10
+  resolution: "graceful-fs@npm:4.2.10"
+  checksum: 3f109d70ae123951905d85032ebeae3c2a5a7a997430df00ea30df0e3a6c60cf6689b109654d6fdacd28810a053348c4d14642da1d075049e6be1ba5216218da
   languageName: node
   linkType: hard
 
@@ -4057,6 +4101,16 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
+  languageName: node
+  linkType: hard
+
+"next-transpile-modules@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "next-transpile-modules@npm:9.0.0"
+  dependencies:
+    enhanced-resolve: ^5.7.0
+    escalade: ^3.1.1
+  checksum: 9a5d86d80cedc2404b2b1d5bd4994f2f7bf60e5e20f24e8cc5cfec34da1418b4a439916f37a95ca336bcf6d81094c3647354ac6a0c6737b3df59e62b6380507d
   languageName: node
   linkType: hard
 
@@ -5238,6 +5292,13 @@ __metadata:
   peerDependencies:
     react: ">= 16.8.0"
   checksum: 9bac720a28d80e871926a6dd92950b8c2c090b5796d0c46f92e91c9bf9860126c7671c6ed460d0edd2030aae4e5b5f189b9b8688b48bd36325a069858ccb5597
+  languageName: node
+  linkType: hard
+
+"tapable@npm:^2.2.0":
+  version: 2.2.1
+  resolution: "tapable@npm:2.2.1"
+  checksum: 3b7a1b4d86fa940aad46d9e73d1e8739335efd4c48322cb37d073eb6f80f5281889bf0320c6d8ffcfa1a0dd5bfdbd0f9d037e252ef972aca595330538aac4d51
   languageName: node
   linkType: hard
 
