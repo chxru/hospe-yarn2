@@ -8,6 +8,7 @@
     "iam": "yarn workspace @hospe/iam dev",
     "doctor": "yarn workspace @hospe/doctor dev -p 3001",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "management": "yarn workspace @hospe/management dev -p 3002",
     "user": "yarn workspace @hospe/user dev -p 3000"
   },
   "workspaces": [

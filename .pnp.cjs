@@ -33,6 +33,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/frontend/doctor"\
       },\
       {\
+        "name": "@hospe/management",\
+        "reference": "workspace:packages/frontend/management"\
+      },\
+      {\
         "name": "@hospe/user",\
         "reference": "workspace:packages/frontend/user"\
       },\
@@ -48,6 +52,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@hospe/doctor", ["workspace:packages/frontend/doctor"]],\
       ["@hospe/iam", ["workspace:packages/backend/iam"]],\
       ["@hospe/main", ["workspace:."]],\
+      ["@hospe/management", ["workspace:packages/frontend/management"]],\
       ["@hospe/types", ["workspace:packages/types"]],\
       ["@hospe/user", ["workspace:packages/frontend/user"]]\
     ],\
@@ -495,6 +500,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:4eeb8b813a8fdab8c3efaf666933acb8f5c357bb1a276f0c7906acdd8b6588a8cbaf9bce48e9efe2ddf95eda09be94a117ffed2ed7f0e346aaa68fecaa7a3b93#npm:7.29.4"],\
             ["eslint-plugin-react-hooks", "virtual:4eeb8b813a8fdab8c3efaf666933acb8f5c357bb1a276f0c7906acdd8b6588a8cbaf9bce48e9efe2ddf95eda09be94a117ffed2ed7f0e346aaa68fecaa7a3b93#npm:4.5.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@hospe/management", [\
+        ["workspace:packages/frontend/management", {\
+          "packageLocation": "./packages/frontend/management/",\
+          "packageDependencies": [\
+            ["@hospe/management", "workspace:packages/frontend/management"],\
+            ["@hospe/common-fe", "workspace:packages/frontend/common"],\
+            ["@hospe/types", "workspace:packages/types"],\
+            ["@mantine/core", "virtual:8aa1113a337bdee6676f43a557c441e665ab971128f1216cee9f2dd7d26ec958c18dd9e93169dc7c4d7238a211273a69d9c1da8f3a5c043fc7b7dfef83726863#npm:4.1.2"],\
+            ["@mantine/form", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:4.1.2"],\
+            ["@mantine/hooks", "virtual:8aa1113a337bdee6676f43a557c441e665ab971128f1216cee9f2dd7d26ec958c18dd9e93169dc7c4d7238a211273a69d9c1da8f3a5c043fc7b7dfef83726863#npm:4.1.2"],\
+            ["@mantine/next", "virtual:8aa1113a337bdee6676f43a557c441e665ab971128f1216cee9f2dd7d26ec958c18dd9e93169dc7c4d7238a211273a69d9c1da8f3a5c043fc7b7dfef83726863#npm:4.1.2"],\
+            ["@types/node", "npm:17.0.23"],\
+            ["@types/react", "npm:17.0.43"],\
+            ["@types/react-dom", "npm:17.0.14"],\
+            ["eslint", "npm:8.12.0"],\
+            ["eslint-config-next", "virtual:8aa1113a337bdee6676f43a557c441e665ab971128f1216cee9f2dd7d26ec958c18dd9e93169dc7c4d7238a211273a69d9c1da8f3a5c043fc7b7dfef83726863#npm:12.1.2"],\
+            ["next", "virtual:8aa1113a337bdee6676f43a557c441e665ab971128f1216cee9f2dd7d26ec958c18dd9e93169dc7c4d7238a211273a69d9c1da8f3a5c043fc7b7dfef83726863#npm:12.1.2"],\
+            ["next-transpile-modules", "npm:9.0.0"],\
+            ["react", "npm:18.0.0"],\
+            ["react-dom", "virtual:8aa1113a337bdee6676f43a557c441e665ab971128f1216cee9f2dd7d26ec958c18dd9e93169dc7c4d7238a211273a69d9c1da8f3a5c043fc7b7dfef83726863#npm:18.0.0"],\
+            ["tabler-icons-react", "virtual:84c6f88ab328cc5550cc8d1a74a3295d9dddde00b23479376e87412c94bb4963c745eb11eec36cdb070b3f5f6654170ad70040da4d165a755ad9cd9d6ac7f43b#npm:1.47.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=bda367"]\
           ],\
           "linkType": "SOFT"\
         }]\

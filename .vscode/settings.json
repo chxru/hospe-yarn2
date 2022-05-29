@@ -13,7 +13,8 @@
     "iam-service",
     "db-mongo",
     "types",
-    "common-ui"
+    "common-ui",
+    "management-ui"
   ],
   "eslint.nodePath": ".yarn/sdks"
 }
