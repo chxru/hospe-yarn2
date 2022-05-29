@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { MantineProvider } from "@mantine/core";
 
-import { AuthProvider } from "../contexts/authContext";
+import { AuthProvider } from "@hospe/common-fe/contexts/authContext";
 
 import AuthenticatedLayout from "../layouts/withAuth";
 import { NextApplicationPage } from "../types";

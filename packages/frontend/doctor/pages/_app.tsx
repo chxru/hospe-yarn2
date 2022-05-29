@@ -1,8 +1,18 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import { AuthProvider } from "@hospe/common-fe/contexts/authContext";
+
+import AuthenticatedLayout from "../layouts/withAuth";
+import { NextApplicationPage } from "../types";
+
+function MyApp({
+  Component,
+  pageProps,
+}: {
+  Component: NextApplicationPage;
+  pageProps: never;
+}) {
   return (
     <MantineProvider
       withGlobalStyles
@@ -12,7 +22,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         colorScheme: "light",
       }}
     >
-      <Component {...pageProps} />
+      <AuthProvider>
+        {Component.requireAuth ? (
+          <AuthenticatedLayout>
+            <Component {...pageProps} />
+          </AuthenticatedLayout>
+        ) : (
+          <Component {...pageProps} />
+        )}
+      </AuthProvider>
     </MantineProvider>
   );
 }

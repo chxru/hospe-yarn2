@@ -1,29 +1,35 @@
-import { createContext, FunctionComponent, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 const REDIRECT_KEY = "redirect_key";
 
 interface User {
-  id: string,
+  id: string;
   name: {
-    first: string,
-    last: string
-  }
-  email: string
+    first: string;
+    last: string;
+  };
+  email: string;
 }
- 
+
 interface IAuthContext {
-  initializing: boolean,
+  initializing: boolean;
   error?: {
-    title: string,
-    description?: string,
-  },
-  accessToken?: string,
-  user: User | null,
-  clearRedirect: () => void
-  getRedirect: () => void,
-  setRedirect: (url: string) => void,
-  updateAccessToken: (token: string) => void,
-  updateUser: (user: User) => void
+    title: string;
+    description?: string;
+  };
+  accessToken?: string;
+  user: User | null;
+  clearRedirect: () => void;
+  getRedirect: () => void;
+  setRedirect: (url: string) => void;
+  updateAccessToken: (token: string) => void;
+  updateUser: (user: User) => void;
 }
 
 const setRedirect = (url: string) => {
@@ -46,7 +52,15 @@ const updateUserFn = (_user: User) => {
   // Placeholder fn, check AuthProvider for definition
 };
 
-const AuthContext = createContext<IAuthContext>({ user: null, initializing: true, setRedirect, getRedirect, clearRedirect, updateAccessToken: updateAccessTokenFn, updateUser: updateUserFn });
+const AuthContext = createContext<IAuthContext>({
+  user: null,
+  initializing: true,
+  setRedirect,
+  getRedirect,
+  clearRedirect,
+  updateAccessToken: updateAccessTokenFn,
+  updateUser: updateUserFn,
+});
 AuthContext.displayName = "auth-context";
 
 export const useAuth = () => {
@@ -56,19 +70,19 @@ export const useAuth = () => {
 };
 
 interface RefreshResponse {
-  _id: string,
-  access: string,
-  email: string,
+  _id: string;
+  access: string;
+  email: string;
   name: {
-    first: string,
-    last: string
-  },
-  refresh: string
+    first: string;
+    last: string;
+  };
+  refresh: string;
 }
 
 export const AuthProvider: FunctionComponent = ({ children }) => {
   const [initializing, setInitializing] = useState<boolean>(true);
-  const [error, setError] = useState<{ title: string, description?: string }>();
+  const [error, setError] = useState<{ title: string; description?: string }>();
   const [accessToken, setAccessToken] = useState<string | undefined>();
   const [user, setUser] = useState<User | null>(null);
 
@@ -82,11 +96,14 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
 
   const RefreshAccessToken = async () => {
     if (accessToken) return;
-    
-    const res = await fetch("/api/auth/refresh", { method: "POST", credentials: "same-origin" });
+
+    const res = await fetch("/api/auth/refresh", {
+      method: "POST",
+      credentials: "same-origin",
+    });
     if (res.ok) {
-      const data = await res.json() as RefreshResponse;
-      if (data.access) setAccessToken(data.access );
+      const data = (await res.json()) as RefreshResponse;
+      if (data.access) setAccessToken(data.access);
       updateUser({ email: data.email, name: data.name, id: data._id });
     }
   };
@@ -97,7 +114,7 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
         setInitializing(true);
         setError(undefined);
 
-        await RefreshAccessToken();        
+        await RefreshAccessToken();
       } catch (err) {
         setError({ title: "Error occurred while token refreshing" });
         console.error(err);
@@ -105,7 +122,6 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
         setInitializing(false);
       }
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value: IAuthContext = {
@@ -120,5 +136,4 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-  
 };
