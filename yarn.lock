@@ -268,11 +268,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hospe/common-fe@*, @hospe/common-fe@workspace:packages/frontend/common":
+"@hospe/common-fe@*, @hospe/common-fe@workspace:packages/common":
   version: 0.0.0-use.local
-  resolution: "@hospe/common-fe@workspace:packages/frontend/common"
+  resolution: "@hospe/common-fe@workspace:packages/common"
   dependencies:
-    "@hospe/common-fe": "*"
     "@hospe/types": "*"
     "@mantine/core": ^4.1.2
     "@mantine/hooks": ^4.1.2
@@ -292,9 +291,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@hospe/doctor@workspace:packages/frontend/doctor":
+"@hospe/doctor@workspace:apps/doctor":
   version: 0.0.0-use.local
-  resolution: "@hospe/doctor@workspace:packages/frontend/doctor"
+  resolution: "@hospe/doctor@workspace:apps/doctor"
   dependencies:
     "@hospe/common-fe": "*"
     "@hospe/types": "*"
@@ -316,9 +315,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@hospe/iam@workspace:packages/backend/iam":
+"@hospe/iam@workspace:apps/iam":
   version: 0.0.0-use.local
-  resolution: "@hospe/iam@workspace:packages/backend/iam"
+  resolution: "@hospe/iam@workspace:apps/iam"
   dependencies:
     "@hospe/types": "*"
     "@types/bcrypt": ^5
@@ -365,9 +364,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@hospe/user@workspace:packages/frontend/user":
+"@hospe/user@workspace:apps/user":
   version: 0.0.0-use.local
-  resolution: "@hospe/user@workspace:packages/frontend/user"
+  resolution: "@hospe/user@workspace:apps/user"
   dependencies:
     "@hospe/common-fe": "*"
     "@hospe/types": "*"
