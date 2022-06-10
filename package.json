@@ -12,7 +12,8 @@
     "user": "yarn workspace @hospe/user dev -p 3000"
   },
   "workspaces": [
-    "packages/**/*"
+    "packages/*",
+    "apps/*"
   ],
   "devDependencies": {
     "@types/eslint": "^8",
