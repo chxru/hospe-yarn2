@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "packageManager": "yarn@3.2.0",
   "dependencies": {
-    "@hospe/common-fe": "*",
     "@hospe/types": "*",
     "@mantine/core": "^4.1.2",
     "@mantine/hooks": "^4.1.2",
